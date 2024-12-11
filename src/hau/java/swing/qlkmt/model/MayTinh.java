@@ -1,5 +1,6 @@
 package hau.java.swing.qlkmt.model;
 
+import java.util.Objects;
 public class MayTinh {
     public String maMay;
     public String tenMay;
@@ -27,9 +28,18 @@ public class MayTinh {
         this.ram = ram;
         this.rom = rom;
         this.gia = gia;
+        this.trangThai = trangThai;
+    }
+    
+    public int getTrangThai() {
+        return trangThai;
     }
 
-    public MayTinh(String maMay, String tenMay, int soLuong, double gia,String tenCpu, String ram,String Rom) {
+    public void setTrangThai(int trangThai) {
+        this.trangThai = trangThai;
+    }
+
+    public MayTinh(String maMay, String tenMay, int soLuong, double gia,String tenCpu, String ram,String rom) {
         this.maMay = maMay;
         this.tenMay = tenMay;
         this.soLuong = soLuong;
@@ -38,7 +48,7 @@ public class MayTinh {
         this.ram = ram;
         this.rom = rom;
     }
-    
+
     public String getMaMay() {
         return maMay;
     }
@@ -93,5 +103,47 @@ public class MayTinh {
 
     public void setGia(double gia) {
         this.gia = gia;
+    }
+
+    public void xuatHang (int s1) {
+        this.soLuong -= s1;
+    }
+
+    @Override
+    public String toString() {
+        return "MayTinh{" + "maMay=" + maMay + ", tenMay=" + tenMay + ", soLuong=" + soLuong + ", gia=" + gia + ", tenCpu=" + tenCpu + ", ram=" + ram + ", rom=" + rom + '}';
+    }
+
+    @Override
+    public boolean equals (Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final MayTinh other = (MayTinh) obj;
+        if (this.soLuong != other.soLuong) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.gia) != Double.doubleToLongBits(other.gia)) {
+            return false;
+        }
+        if (!Objects.equals(this.maMay, other.maMay)) {
+            return false;
+        }
+        if (!Objects.equals(this.tenMay, other.tenMay)) {
+            return false;
+        }
+        if (!Objects.equals(this.tenCpu, other.tenCpu)) {
+            return false;
+        }
+        if (!Objects.equals(this.ram, other.ram)) {
+            return false;
+        }
+        return Objects.equals(this.rom, other.rom);
     }
 }

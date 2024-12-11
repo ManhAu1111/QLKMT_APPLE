@@ -5,28 +5,53 @@
 package hau.java.swing.qlkmt.model;
 
 import java.sql.Connection;
+import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 
-/**
- *
- * @author longnguyen
- */
+import javax.swing.JOptionPane;
+
 public class Connector {
-    public static Connection getConnection() {
-        Connection connect = null;
+	
+	public static Connection getConnection() {
+        Connection c = null;
         try {
-            // Begin connect database
-            Class.forName("com.mysql.jdbc.Driver");
-            connect = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/qlkmt_apple", 
-                "root", 
-                ""
-            );
-            System.out.println("Connect database success!");
-            return connect;
+            // Dang ky MySQL Driver voi DriverManager
+            //DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+        	DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+            //Cac thong so
+            String url = "jdbc:mySQL://localhost:3306/qlkmt_apple";
+            String userName = "root";
+            String password = "";
+            //Tao ket noi 
+            c = DriverManager.getConnection(url, userName, password);
         } catch (Exception e) {
+            // TODO: handle exception
+//			JOptionPane.showMessageDialog(null, "Không thể kết nối đến cơ sở dữ liệu !","Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
+        return c;
+    }
+
+    public static void closeConnection(Connection c) {
+        try {
+            if (c != null) {
+                c.close();
+            }
+        } catch (Exception e) {
+            // TODO: handle exception
             e.printStackTrace();
-            return null;
+        }
+    }
+
+    public static void printInfo(Connection c) {
+        try {
+            if (c != null) {
+                DatabaseMetaData mtdt = c.getMetaData();
+                System.out.println(mtdt.getDatabaseProductName());
+                System.out.println(mtdt.getDatabaseProductVersion());
+            }
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
         }
     }
 }
