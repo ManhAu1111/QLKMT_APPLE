@@ -35,7 +35,7 @@ public class IMacDao implements DAOInterface<IMac> {
 			ps.setString(10, "IMac");
 			ps.setInt(11, t.getTrangThai());
 			ketqua = ps.executeUpdate();
-			Connector.closeConnection(con);
+			//Connector.closeConnection(con);
 		} catch (Exception e) {
 			// TODO: handle exception
 			JOptionPane.showMessageDialog(null, "Khong them duoc" + t.getMaMay(), "Loi", JOptionPane.ERROR_MESSAGE);
@@ -64,7 +64,7 @@ public class IMacDao implements DAOInterface<IMac> {
 			ps.setInt(11, t.getTrangThai());
 			ps.setString(12, t.getMaMay());
 			ketqua = ps.executeUpdate();
-			Connector.closeConnection(con);
+			//Connector.closeConnection(con);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -81,7 +81,7 @@ public class IMacDao implements DAOInterface<IMac> {
 			String sql = "DELETE FROM MayTinh WHERE maMay=?";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ketqua = ps.executeUpdate();
-			Connector.closeConnection(con);
+			//Connector.closeConnection(con);
 
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -114,7 +114,7 @@ public class IMacDao implements DAOInterface<IMac> {
 				ketqua.add(mt);
 
 			}
-			Connector.closeConnection(con);
+			//Connector.closeConnection(con);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -147,7 +147,7 @@ public class IMacDao implements DAOInterface<IMac> {
 						trangThai);
 
 			}
-			Connector.closeConnection(con);
+			//Connector.closeConnection(con);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -170,7 +170,7 @@ public class IMacDao implements DAOInterface<IMac> {
 			if (loai.equals("IMac")) {
 				return true;
 			}
-			Connector.closeConnection(con);
+			//Connector.closeConnection(con);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

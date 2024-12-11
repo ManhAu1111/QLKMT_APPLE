@@ -9,16 +9,6 @@ import javax.swing.*;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JInternalFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -47,19 +37,25 @@ public class trangSanPham extends JInternalFrame {
 	private JTable tblSanPham;
 	private JTextField searchField;
 	private TableModel DefaultTableModel;
+        private JScrollPane scrollPane;
 
 	public trangSanPham() {
 		//this.setLocale(null);
-		this.setDefaultCloseOperation(JInternalFrame.EXIT_ON_CLOSE);
+		//this.setDefaultCloseOperation(JInternalFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
 		this.setSize(1180, 650);
-		this.initComponents();
+		initComponents();
 		BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
 		ui.setNorthPane(null);
-		tblSanPham.setDefaultEditor(Object.class, null);
+		if (tblSanPham == null) {
+	        tblSanPham = new JTable(); // Khởi tạo nếu cần
+	        // Hoặc thông báo lỗi
+	        System.err.println("tblSanPham chưa được khởi tạo trong initComponents().");
+	    }
+		//tblSanPham.setDefaultEditor(Object.class, new DefaultCellEditor(searchField));
 		initTable();
 		loadDataToTable();
-		changeTextSearch();
+		
 	}
 
 	// tạo bảng
@@ -179,7 +175,7 @@ public class trangSanPham extends JInternalFrame {
 //		));
 		//tblSanPham.setModel(DefaultTableModel);
 
-		JScrollPane scrollPane = new JScrollPane(tblSanPham);
+		scrollPane = new JScrollPane(tblSanPham);
 
 		scrollPane.setViewportView(tblSanPham);
 		scrollPane.setPreferredSize(new Dimension(1168, 626));
@@ -274,30 +270,65 @@ public class trangSanPham extends JInternalFrame {
 		}
 	}
 
-	public void changeTextSearch() {
-		searchField.getDocument().addDocumentListener(new DocumentListener() {
+//	public void changeTextSearch() {
+//		searchField.getDocument().addDocumentListener(new DocumentListener() {
+//
+//			@Override
+//			public void removeUpdate(DocumentEvent e) {
+//				// TODO Auto-generated method stub
+//				if (searchField.getText() == null) {
+//					loadDataToTable();
+//				}
+//
+//			}
+//
+//			@Override
+//			public void insertUpdate(DocumentEvent e) {
+//				// TODO Auto-generated method stub
+//
+//			}
+//
+//			@Override
+//			public void changedUpdate(DocumentEvent e) {
+//				// TODO Auto-generated method stub
+//
+//			}
+//		});
+//	}
+	public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        // <editor-fold defaultstate="collapsed" desc=" Look and feel setting code
+        // (optional) ">
+        /*
+     * If Nimbus (introduced in Java SE 6) is not available, stay with the default
+     * look and feel.
+     * For details see
+     * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(trangSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(trangSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(trangSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(trangSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        // </editor-fold>
 
-			@Override
-			public void removeUpdate(DocumentEvent e) {
-				// TODO Auto-generated method stub
-				if (searchField.getText() == null) {
-					loadDataToTable();
-				}
-
-			}
-
-			@Override
-			public void insertUpdate(DocumentEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void changedUpdate(DocumentEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-		});
-	}
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new trangSanPham().setVisible(true);
+            }
+        });
+    }
 
 }

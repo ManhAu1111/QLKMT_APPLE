@@ -38,7 +38,7 @@ public class MayTinhDao implements DAOInterface<MayTinh> {
 			ps.setString(6, t.getRom());
 			ps.setInt(7, t.getTrangThai());
 			ketqua = ps.executeUpdate(sql);
-			Connector.closeConnection(con);
+			//Connector.closeConnection(con);
 		} catch (SQLException ex) {
 			Logger.getLogger(MayTinhDao.class.getName()).log(Level.SEVERE, null, ex);
 		}
@@ -54,7 +54,7 @@ public class MayTinhDao implements DAOInterface<MayTinh> {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, t.getMaMay());
 			ketqua = ps.executeUpdate(sql);
-			Connector.closeConnection(con);
+			//Connector.closeConnection(con);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -83,7 +83,7 @@ public class MayTinhDao implements DAOInterface<MayTinh> {
 				ketqua.add(mt);
 
 			}
-			Connector.closeConnection(con);
+			//Connector.closeConnection(con);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -113,7 +113,7 @@ public class MayTinhDao implements DAOInterface<MayTinh> {
 				int trangThai = rs.getInt("trangThai");
 				ketqua = new MayTinh(maMay, tenMay, soLuong, tenCpu, ram, rom, gia, trangThai);
 			}
-			Connector.closeConnection(con);
+			//Connector.closeConnection(con);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -130,7 +130,7 @@ public class MayTinhDao implements DAOInterface<MayTinh> {
 			ps.setInt(1, soLuong);
 			ps.setString(2, maMay);
 			ketqua = ps.executeUpdate();
-			Connector.closeConnection(con);
+			//Connector.closeConnection(con);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -146,7 +146,7 @@ public class MayTinhDao implements DAOInterface<MayTinh> {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, maMay);
 			ketqua = ps.executeUpdate();
-			Connector.closeConnection(con);
+			//Connector.closeConnection(con);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -180,7 +180,7 @@ public class MayTinhDao implements DAOInterface<MayTinh> {
 					ketquaTonKho.add(mayTinh);
 				}
 			}
-			Connector.closeConnection(con);
+			//Connector.closeConnection(con);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -208,7 +208,7 @@ public class MayTinhDao implements DAOInterface<MayTinh> {
 				ketqua.add(mt);
 
 			}
-			Connector.closeConnection(con);
+			//Connector.closeConnection(con);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -226,7 +226,7 @@ public class MayTinhDao implements DAOInterface<MayTinh> {
 			while (rs.next()) {
 				soluong++;
 			}
-			Connector.closeConnection(con);
+			//Connector.closeConnection(con);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}

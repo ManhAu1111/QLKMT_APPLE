@@ -36,7 +36,7 @@ public class LaptopDao implements DAOInterface<Laptop> {
 			ps.setString(10, "Laptop");
 			ps.setInt(11, t.getTrangThai());
 			ketqua = ps.executeUpdate();
-			Connector.closeConnection(con);
+			//Connector.closeConnection(con);
 		} catch (Exception e) {
 			// TODO: handle exception
 			JOptionPane.showMessageDialog(null, "Khong them duoc" + t.getMaMay(), "Loi", JOptionPane.ERROR_MESSAGE);
@@ -65,7 +65,7 @@ public class LaptopDao implements DAOInterface<Laptop> {
 			ps.setInt(11, t.getTrangThai());
 			ps.setString(12, t.getMaMay());
 			ketqua = ps.executeUpdate();
-			Connector.closeConnection(con);
+			//Connector.closeConnection(con);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -82,7 +82,7 @@ public class LaptopDao implements DAOInterface<Laptop> {
 			String sql = "DELETE FROM MayTinh WHERE maMay=?";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ketqua = ps.executeUpdate();
-			Connector.closeConnection(con);
+			//Connector.closeConnection(con);
 			
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -115,7 +115,7 @@ public class LaptopDao implements DAOInterface<Laptop> {
 				ketqua.add(mt);
 				
 			}
-			Connector.closeConnection(con);
+			//Connector.closeConnection(con);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -147,7 +147,7 @@ public class LaptopDao implements DAOInterface<Laptop> {
 				ketqua = new Laptop(kichThuocMan, dungLuongPin, maMay, tenMay, soLuong, tenCpu, ram, rom, gia, trangThai);
 				
 			}
-			Connector.closeConnection(con);
+			//Connector.closeConnection(con);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -170,7 +170,7 @@ public class LaptopDao implements DAOInterface<Laptop> {
 			if (loai.equals("Laptop")) {
 				return true;
 			}
-			Connector.closeConnection(con);
+			//Connector.closeConnection(con);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

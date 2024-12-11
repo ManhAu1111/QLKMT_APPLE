@@ -7,6 +7,8 @@ import javax.swing.*;
 
 public class trangChu extends JFrame {
 	private JPanel centerPanel;
+	private JPanel mainPanel;
+	private Container mainpanel;
 	
 	public trangChu() throws UnsupportedLookAndFeelException {
 		this.init();
@@ -22,7 +24,7 @@ public class trangChu extends JFrame {
 
 		trangSanPham sp = new trangSanPham();
 		
-		centerPanel.add(sp).setVisible(true);
+		mainpanel.add(sp).setVisible(true);
 
 	}
 
@@ -98,4 +100,45 @@ public class trangChu extends JFrame {
 		button.setFocusPainted(false); // Loại bỏ đường viền khi nhấn nút
 		button.setContentAreaFilled(false); // Loại bỏ nền mặc định, làm cho viền rõ ràng hơn
 	}
+//	public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        // <editor-fold defaultstate="collapsed" desc=" Look and feel setting code
+//        // (optional) ">
+//        /*
+//     * If Nimbus (introduced in Java SE 6) is not available, stay with the default
+//     * look and feel.
+//     * For details see
+//     * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(trangChu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(trangChu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(trangChu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(trangChu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        // </editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                try {
+//					new trangChu().setVisible(true);
+//				} catch (UnsupportedLookAndFeelException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//            }
+//        });
+//    }
+
 }
